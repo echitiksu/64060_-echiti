@@ -1,0 +1,66 @@
+---
+title: "Assignment_1"
+output:
+  html_document: default
+  pdf_document: default
+date: "2024-08-28"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library(readxl)
+```
+
+## Data source: https://www.kaggle.com/datasets/danielkyrka/bmw-pricing-challenge/data Importing and reading the data 
+
+```{r}
+data<- read_xlsx("C:/Users/echit/Documents/School/Fundamentals of Machine Learning/Assignment_1/bmw_pricing_challenge.xlsx")
+```
+
+## Identify a few selected quantitative variables and print descriptive statistics
+
+```{r}
+q_variables<-c("mileage","engine_power","price")
+summary(data[q_variables])
+```
+
+## Identify a few selected categorical variables and print descriptive statistics
+
+```{r}
+c_variables<-c("fuel","paint_color","car_type")
+table(data[c_variables])
+```
+
+## Transform at least one variable. It doesn't matter what the transformation is. Log transformation on the price variable
+
+```{r}
+print(data$price)
+Log_Price <- log(data$price)
+print(Log_Price)
+```
+
+## Plot at least one quantitative variable, and one scatterplot - Histogram of the price variable
+
+```{r}
+hist(data$price,
+main = "Histogram of Price", 
+xlab = "Price", 
+ylab = "Frequency", 
+col = "lightblue", 
+border = "black")
+```
+
+## Plot at least one quantitative variable, and one scatterplot - Scatterplot of mileage to price
+
+```{r}
+plot(data$mileage, data$price, 
+     main = "Scatterplot of Mileage vs. Price", 
+     xlab = "Mileage", 
+     ylab = "Price",
+     col = "blue",           # Color of points
+     cex = .5)              # Size of points
+```
